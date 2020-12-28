@@ -2,7 +2,7 @@
 
 
 // Setup empty JS object to act as endpoint for all routes
-projectData = [];
+projectData = {};
 
 
 // Require Express to run server and routes
@@ -37,7 +37,7 @@ app.get('/lastStoredData',getProjectData);
 
 function getProjectData(req, res) {
   console.log('a request for last recorded Date, Temperature, Feeling');
-  res.send(projectData[projectData.length - 1]);
+  res.send(projectData);
 }
 
 
@@ -46,9 +46,9 @@ app.post('/addData', receiveProjectData);
 
 function receiveProjectData(req,res) {
   res.status(200).send('Enjoy the weather!');
-  const dataObject = {date: req.body.date,
-                      temp: req.body.temp,
-                      content: req.body.content};
+  projectData.date = req.body.date;
+  projectData.temp = req.body.temp;
+  projectData.content = req.body.content;
   projectData.push(dataObject);
   console.log(`Received ${req.body}`);
   console.log('The current state of projectData is now:');
