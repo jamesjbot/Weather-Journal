@@ -49,7 +49,6 @@ function receiveProjectData(req,res) {
   projectData.date = req.body.date;
   projectData.temp = req.body.temp;
   projectData.content = req.body.content;
-  projectData.push(dataObject);
   console.log(`Received ${req.body}`);
   console.log('The current state of projectData is now:');
   console.log(projectData);

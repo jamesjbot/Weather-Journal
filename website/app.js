@@ -3,7 +3,7 @@
 
 /* Global Variables */
 
-const apikey = 'd742a68877e0f57a3de490481784ea94';
+const apikey = 'd742a68877e0f57a3de490481784ea94&units=imperial';
 
 
 // Create a new date instance dynamically with JS
@@ -14,16 +14,9 @@ function generateDate(time) {
 }
 
 
-// Converts Kelvin to Fahrenheit
-function convertKelvinToFahrenheit(kelvinTemp) {
-  return Math.round(( (kelvinTemp - 273.15) * (9/5) ) + 32);
-}
-
-
 // Attach EventListener to button
 const button = document.getElementById('generate');
 button.addEventListener("click", generate);
-
 
 
 // Asynchronously get last posted data from server endpoint
@@ -66,7 +59,7 @@ function jsonifyData(response) {
 
 // Pull out temperature and date from the OpenWeather API response
 function extractTempAndDateFrom(data) {
-  return {temp: convertKelvinToFahrenheit(data.main.temp), date: generateDate(data.dt)};
+  return {temp: data.main.temp, date: generateDate(data.dt)};
 }
 
 
@@ -94,9 +87,9 @@ function updateUI(data) {
   const uiDate = document.getElementById('date');
   const uiTemp = document.getElementById('temp');
   const uiContent = document.getElementById('content');
-  uiDate.innerText = data.date;
+  uiDate.innerHTML = data.date;
   uiTemp.innerHTML = data.temp+'&#8457';
-  uiContent.innerText = data.content;
+  uiContent.innerHTML = data.content;
 }
 
 
