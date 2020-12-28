@@ -6,7 +6,7 @@ This project creates an asynchronous web app that uses a Web API and user data t
 ## How to use
 Start the server by using Terminal to navigate to the folder that contains server.js.
 
-Start the server with 'node server.js'.
+Start the server with 'npm run start'.
 
 Direct your web browser to http://localhost:8888/, to access the application.
 
